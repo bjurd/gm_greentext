@@ -201,7 +201,12 @@ hook.Add("PostGamemodeLoaded", "greentext:Support:ATags", function()
 			--- @cast IsTeam boolean
 			--- @cast IsDead boolean
 
-			--- @diagnostic disable-next-line: undefined-field
+			--- @class Player
+			--- @field getChatTag function
+			if not isfunction(Typer.getChatTag) then
+				return
+			end
+
 			local Pieces, MessageColor, NameColor = Typer:getChatTag()
 
 			--- @cast Pieces table|nil
