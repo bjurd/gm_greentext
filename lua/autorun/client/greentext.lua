@@ -70,7 +70,10 @@ function greentext.OnPlayerChat(Player, Text, IsTeam, IsDead)
 
 	if not Support:RunCallbacks(Message, "PreTyper", Typer) then
 		if Typer then
-			table.insert(Message, Typer)
+			local TeamColor = GAMEMODE:GetTeamColor(Typer) or color_white
+
+			table.insert(Message, TeamColor)
+			table.insert(Message, Typer:Nick())
 		else
 			table.insert(Message, language.GetPhrase("chat.console"))
 		end
